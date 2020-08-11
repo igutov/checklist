@@ -8,6 +8,8 @@
                 <div class="list-group-item list-group-item-action flex-column align-items-start">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">{{ $task->task }}</h5>
+                        {{-- <h5 class="mb-1">{{ $task->status }}</h5>
+                        --}}
                     </div>
                     <div class="row">
 
@@ -23,7 +25,13 @@
                             <form method="POST" action="../task/{{ $task->id }}">
                                 {{ csrf_field() }}
                                 {{ method_field('PATCH') }}
-                                <input type="submit" class="btn btn-danger" value="Выполнено">
+                                @if ($task->status)
+                                    <input type="submit" class="btn btn-success" value="Выполнено">
+                                @else
+                                    <input type="submit" class="btn btn-danger" value="Снять выполнение">
+                                @endif
+                                {{-- <input type="submit" class="btn btn-danger"
+                                    value="{{ $task->status }}"> --}}
                             </form>
                         </div>
 
