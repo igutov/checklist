@@ -29,3 +29,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+// Route::resource('list', 'ListController')->parameters([
+//     'lists' => 'list_id'
+// ]);
+
+// Route::resources('task', 'TaskController');
+
+Route::resources([
+    'list' => 'ListController',
+    'task' => 'TaskController',
+]);
